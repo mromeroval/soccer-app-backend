@@ -15,6 +15,8 @@ export const addNewPlayer = (req, res) => {
   });
 };
 
+// Make Mongoose use `findOneAndUpdate()`.
+mongoose.set('useFindAndModify', false);
 // Function for Updating player by ID
 export const updatePlayer = (req, res) => {
   const PlayerId = req.params.PlayerId;
