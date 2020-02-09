@@ -47,3 +47,14 @@ export const getPlayers = (req, res) => {
     res.json(Player)
   });
 }
+
+// Function for deleting player
+export const deletePlayer = (req, res) => {
+  const PlayerId = req.params.PlayerId;
+  Player.deleteOne({_id: PlayerId}, (error) => {
+    if(error){
+      res.send(error)
+    }
+    res.json({message: 'Player successfully deleted'})
+  })
+}
