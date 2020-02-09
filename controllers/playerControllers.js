@@ -15,9 +15,21 @@ export const addNewPlayer = (req, res) => {
   });
 };
 
+// Function for Updating player by ID
+export const updatePlayer = (req, res) => {
+  const PlayerId = req.params.PlayerId;
+  const data = req.body;
+  Player.findOneAndUpdate({_id: PlayerId}, data, {new: true}, (error, Player) => {
+    if (error) {
+      res.send(error)
+    } 
+      res.json(Player)
+  })
+}
+
 // Function for gettin player by ID
 export const getPlayerById = (req, res) => {
-  let PlayerId = req.params.PlayerId;
+  const PlayerId = req.params.PlayerId;
   Player.findById(PlayerId, (error, Player) => {
     if(error){
       res.send(error)
